@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import AddTodo from "./AddTodo/AddTodo";
-import Todo from "./Todo/Todo";
+import AddTodo from "../AddTodo/AddTodo";
+import Todo from "../Todo/Todo";
+import styles from "./AppTodo.module.css";
 
 export default function AppTodo({filter})
 {
@@ -18,8 +19,8 @@ export default function AppTodo({filter})
     const filterd = getFilterdItem(todo, filter);
 
     return(
-        <section>
-        <ul>
+        <section className= {styles.container}>
+        <ul className= {styles.list}>
             {filterd.map((item) => 
                 (<Todo key = {item.id} todos = {item} onUpdate = {handleUpdate} onDelete = {handleDelete}  />
             ))}
@@ -31,9 +32,12 @@ export default function AppTodo({filter})
 
 function getFilterdItem(todo, filter)
 {
+    // todo가 전체이면 todo 보여주기
     if(filter === 'all')
     {
         return todo;
     }
+
+    // todo 상태가 filter가 되면 filter 값만 보여주기
     return todo.filter((todos) => todos.status === filter);
 }

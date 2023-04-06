@@ -1,5 +1,6 @@
 import React from "react";
 import {GoTrashcan} from "react-icons/go";
+import styles from "./Todo.module.css";
 
 export default function Todo( {todos, onUpdate, onDelete })
 {
@@ -13,10 +14,10 @@ export default function Todo( {todos, onUpdate, onDelete })
     const handleDelete = () => onDelete(todos);
     
     return(
-        <li>
-            <input type = "checkbox" id = "checkbox" checked = {status === 'completed'} onChange = {handleChange} />
-            <label htmlFor= "checkbox">{text}</label>
-            <button onClick= {handleDelete}><GoTrashcan/></button>
+        <li className= {styles.todo}>
+            <input className= {styles.input} type = "checkbox" id = "checkbox" checked = {status === 'completed'} onChange = {handleChange} />
+            <label className= {styles.label} htmlFor= "checkbox">{text}</label>
+            <span className= {styles.icon}><button className= {styles.button} onClick= {handleDelete}><GoTrashcan/></button></span>    
         </li>
     );
 }
