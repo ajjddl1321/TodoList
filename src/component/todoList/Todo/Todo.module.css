@@ -21,7 +21,7 @@
 .icon{
     width: 26px;
     height: 26px;
-    background-color: #ededed;
+    background-color: var(--color-grey);
     border-radius: 100%;
     transition: all 150ms ease-out;
 }
